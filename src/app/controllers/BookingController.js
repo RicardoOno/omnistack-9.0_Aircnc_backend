@@ -15,6 +15,12 @@ module.exports = {
 
         await booking.populate('spot').populate('user').execPopulate();
 
+        const ownreSocket = req.connectedUsers[booking.spot.user];
+
+        if(ownreSocket) {
+            req.io.to(ownreSocket).emit('booking_request', booking);
+        }
+
         return res.json(booking);
 
     }
