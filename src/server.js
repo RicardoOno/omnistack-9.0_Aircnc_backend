@@ -15,7 +15,7 @@ const server = http.Server(app); //req https
 const io = socketio(server); //req sockets
 
 
-const connectedUsers = [];
+const connectedUsers = {};
 
 
 mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack-dckjy.mongodb.net/semana09?retryWrites=true&w=majority', {
